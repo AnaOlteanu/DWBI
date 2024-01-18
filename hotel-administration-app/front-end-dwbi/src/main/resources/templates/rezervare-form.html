@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="TemplateMo">
+    <title>Adauga rezervare</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/fontawesome.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/flex-slider.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/templatemo-stand-blog.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/owl.css}"/>
+
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/bootstrap/css/bootstrap.min.css}"/>
+<body>
+
+<div th:insert="navbar :: navbar">  </div>
+
+<section class="contact-us">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="down-contact">
+                    <div class="row">
+                        <div class="sidebar-item contact-form">
+                            <div class="sidebar-heading">
+                                <h2>Adauga o rezervare</h2>
+                            </div>
+                            <div class="content">
+                                <form id="blog" th:object="${rezervare}" th:action="@{/rezervare}" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" th:field="*{idRezervare}"/>
+                                    <div class="row">
+
+                                        <div class="col-md-6 col-sm-12" style="margin-bottom: 30px;">
+                                            <fieldset>
+                                                <label for="client"> Selecteaza clientul</label>
+                                                <select class="custom-select" id="client" name="client" th:field="*{client}">
+                                                    <option th:each="clientOption:${clienti}"
+                                                            th:value="${clientOption.idClient}" th:text="|${clientOption.nume} ${clientOption.prenume}|">
+                                                    </option>
+                                                </select>
+                                            </fieldset>
+                                        </div>
+
+                                        <div class="col-md-6 col-sm-12" style="margin-bottom: 30px;">
+                                            <fieldset>
+                                                <label for="angajat"> Selecteaza angajat</label>
+                                                <select class="custom-select" id="angajat" name="angajat" th:field="*{angajat}">
+                                                    <option th:each="angajatOption:${angajati}"
+                                                            th:value="${angajatOption.idAngajat}" th:text="|${angajatOption.nume} ${angajatOption.prenume}|">
+                                                    </option>
+                                                </select>
+                                            </fieldset>
+                                        </div>
+
+
+                                        <div class="col-md-6 col-sm-12" style="margin-bottom: 30px;">
+                                            <fieldset>
+                                                <label for="discount"> Selecteaza discount</label>
+                                                <select class="custom-select" id="discount" name="discount" th:field="*{discount}">
+                                                    <option th:each="discountOption:${discounturi}"
+                                                            th:value="${discountOption.idDiscount}" th:text="${discountOption.denumire}">
+                                                    </option>
+                                                </select>
+                                            </fieldset>
+                                        </div>
+
+                                        <div class="col-md-6 col-sm-12">
+                                            <fieldset>
+                                                <label for="data_checkin">Data checkin</label>
+                                                <input name="data_checkin" type="date" id="data_checkin" placeholder="Data checkin" th:field="*{dataCheckin}">
+                                            </fieldset>
+                                        </div>
+
+                                        <div class="col-md-6 col-sm-12">
+                                            <fieldset>
+                                                <label for="data_checkout">Data checkout</label>
+                                                <input name="data_checkout" type="date" id="data_checkout" placeholder="Data checkout" th:field="*{dataCheckout}">
+                                            </fieldset>
+                                        </div>
+
+                                        <div class="col-md-6 col-sm-12" style="margin-bottom: 30px;">
+                                            <fieldset>
+                                                <label for="camere"> Selecteaza camere</label>
+                                                <select class="custom-select" id="camere" name="camere" th:field="*{camereRezervare}" multiple>
+                                                    <option th:each="cameraOption:${camere}"
+                                                            th:value="${cameraOption.idCamera}" th:text="|${cameraOption.nume} ${cameraOption.hotel.nume}|">
+                                                    </option>
+                                                </select>
+                                            </fieldset>
+                                        </div>
+
+                                        <div class="col-md-6 col-sm-12">
+                                            <fieldset>
+                                                <label for="nr_nopti">Numar nopti</label>
+                                                <input name="nr_nopti" type="number" id="nr_nopti" placeholder="Numar nopti" th:field="*{nrNopti}">
+                                            </fieldset>
+                                        </div>
+
+                                        <div class="col-md-6 col-sm-12" style="margin-bottom: 30px;">
+                                            <fieldset>
+                                                <label for="status"> Selecteaza staus</label>
+                                                <select class="custom-select" id="status" name="status" th:field="*{status}">
+                                                    <option th:each="statusOption:${T(com.example.frontenddwbi.model.StatusEnum).values()}"
+                                                            th:value="${statusOption}" th:text="${statusOption.name()}">
+                                                    </option>
+                                                </select>
+                                            </fieldset>
+                                        </div>
+
+
+                                        <div class="col-lg-12">
+                                            <fieldset>
+                                                <button type="submit" id="form-submit" class="main-button">Adauga</button>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript" th:src="@{/jquery/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/custom.js}"></script>
+<script type="text/javascript" th:src="@{/js/owl.js}"></script>
+<script type="text/javascript" th:src="@{/js/slick.js}"></script>
+<script type="text/javascript" th:src="@{/js/isotope.js}"></script>
+<script type="text/javascript" th:src="@{/js/accordions.js}"></script>
+
+
+</body>
+
+</html>

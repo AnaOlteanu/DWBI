@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="TemplateMo">
+    <title>Rezervari</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/fontawesome.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/flex-slider.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/templatemo-stand-blog.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/owl.css}"/>
+
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
+
+
+<div th:insert="navbar :: navbar">  </div>
+
+<div class="container mt-3 mb-4">
+    <h4 style="text-align: center">Lista Rezervarilor</h4>
+</div>
+
+
+<div class="container mt-3 mb-4">
+    <div class="col-lg-9 mt-4 mt-lg-0" style="max-width: 100%;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="rezervare-dashboard-info-box table-responsive mb-0 bg-white p-4 shadow-sm">
+                    <table class="table manage-candiDates-top mb-0">
+                        <thead>
+                        <tr>
+                            <th>Id Rezervare</th>
+                            <th class="text-center">Data rezervare</th>
+                            <th class="text-center">Data checkin</th>
+                            <th class="text-center">Data checkout</th>
+                            <th class="text-center">Nr camere</th>
+                            <th class="text-center">Nr nopti</th>
+                            <th class="text-center">Pret pe camera</th>
+<!--                            <th class="action text-right">Action</th>-->
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="candiDates-list" th:each="rezervare : ${rezervarePage.content}" >
+                            <td class="candiDate-list-favourite-time text-center">
+                                <span class="candiDate-list-time order-1" th:text="${rezervare.idRezervare}"></span>
+                            </td>
+                            <td class="candiDate-list-favourite-time text-center">
+                                <span class="candiDate-list-time order-1" th:text="${rezervare.beautyDate(rezervare.dataRezervare)}" ></span>
+                            </td>
+                            <td class="candiDate-list-favourite-time text-center">
+                                <span class="candiDate-list-time order-1" th:text="${rezervare.beautyDate(rezervare.dataCheckin)}" ></span>
+                            </td>
+                            <td class="candiDate-list-favourite-time text-center">
+                                <span class="candiDate-list-time order-1" th:text="${rezervare.beautyDate(rezervare.dataCheckout)}" ></span>
+                            </td>
+                            <td class="candiDate-list-favourite-time text-center">
+                                <span class="candiDate-list-time order-1" th:text="${rezervare.nrCamere}" ></span>
+                            </td>
+                            <td class="candiDate-list-favourite-time text-center">
+                                <span class="candiDate-list-time order-1" th:text="${rezervare.nrNopti}" ></span>
+                            </td>
+                            <td class="candiDate-list-favourite-time text-center">
+                                <span class="candiDate-list-time order-1" th:text="${rezervare.pretTotal}" ></span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-center mt-3 mt-sm-3">
+                        <ul class="page-numbers justify-content-center mb-0">
+                            <li th:if="${rezervarePage.totalPages > 0}" class="pagination"
+                                th:each="pageNumber : ${#numbers.sequence(1,T(java.lang.Math).min(7,rezervarePage.totalPages))}">
+                                <a th:href="@{/rezervare/list(size=${rezervarePage.size}, page=${pageNumber})}"
+                                   th:text="${pageNumber}" th:class="${pageNumber==rezervarePage.number + 1} ? active"></a>
+                            </li>
+
+                            <li th:if="${rezervarePage.totalPages > 0}" class="pagination">
+                                <span th:if="${rezervarePage.number > 6}"> ... </span>
+                                <a th:if="${rezervarePage.number > 6}"
+                                   th:text="${rezervarePage.number + 1}"
+                                   th:class="active"></a>
+                            </li>
+                            <li th:if="${rezervarePage.totalPages > 0}" class="pagination" >
+                                <a th:if="${rezervarePage.number + 1 < rezervarePage.totalPages}"
+                                   th:href="@{/rezervare/list(size=${rezervarePage.size},page=${rezervarePage.number+2})}"><i class="fa fa-angle-double-right"></i></a>
+                                <span th:unless="${rezervarePage.number + 1 < rezervarePage.totalPages}"><i class="fa fa-angle-double-right"></i></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" th:src="@{/jquery/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/custom.js}"></script>
+<script type="text/javascript" th:src="@{/js/owl.js}"></script>
+<script type="text/javascript" th:src="@{/js/slick.js}"></script>
+<script type="text/javascript" th:src="@{/js/isotope.js}"></script>
+<script type="text/javascript" th:src="@{/js/accordions.js}"></script>
+
+</body>
+
+<style>
+    body{
+        background-color: #f8f9fa!important
+    }
+    .p-4 {
+        padding: 1.5rem!important;
+    }
+    .mb-0, .my-0 {
+        margin-bottom: 0!important;
+    }
+    .shadow-sm {
+        box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+    }
+
+    /* rezervare-dashboard-info-box */
+    .rezervare-dashboard-info-box .candiDates-list .thumb {
+        margin-right: 20px;
+    }
+    .rezervare-dashboard-info-box .candiDates-list .thumb img {
+        width: 80px;
+        height: 80px;
+        -o-object-fit: cover;
+        object-fit: cover;
+        overflow: hidden;
+        border-radius: 50%;
+    }
+
+    .rezervare-dashboard-info-box .title {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        padding: 30px 0;
+    }
+
+    .rezervare-dashboard-info-box .candiDates-list td {
+        vertical-align: middle;
+    }
+
+    .rezervare-dashboard-info-box td li {
+        margin: 0 4px;
+    }
+
+    .rezervare-dashboard-info-box .table thead th {
+        border-bottom: none;
+    }
+
+    .table.manage-candiDates-top th {
+        border: 0;
+    }
+
+    .rezervare-dashboard-info-box .candiDate-list-favourite-time .candiDate-list-favourite {
+        margin-bottom: 10px;
+    }
+
+    .table.manage-candiDates-top {
+        min-width: 650px;
+    }
+
+    .rezervare-dashboard-info-box .candiDate-list-details ul {
+        color: #969696;
+    }
+
+    /* CandiDate List */
+    .candiDate-list {
+        background: #ffffff;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        border-bottom: 1px solid #eeeeee;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        padding: 20px;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+    .candiDate-list:hover {
+        -webkit-box-shadow: 0px 0px 34px 4px rgba(33, 37, 41, 0.06);
+        box-shadow: 0px 0px 34px 4px rgba(33, 37, 41, 0.06);
+        position: relative;
+        z-index: 99;
+    }
+    .candiDate-list:hover a.candiDate-list-favourite {
+        color: #e74c3c;
+        -webkit-box-shadow: -1px 4px 10px 1px rgba(24, 111, 201, 0.1);
+        box-shadow: -1px 4px 10px 1px rgba(24, 111, 201, 0.1);
+    }
+
+    .candiDate-list .candiDate-list-image {
+        margin-right: 25px;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 80px;
+        flex: 0 0 80px;
+        border: none;
+    }
+    .candiDate-list .candiDate-list-image img {
+        width: 80px;
+        height: 80px;
+        -o-object-fit: cover;
+        object-fit: cover;
+    }
+
+    .candiDate-list-title {
+        margin-bottom: 5px;
+    }
+
+    .candiDate-list-details ul {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-bottom: 0px;
+    }
+    .candiDate-list-details ul li {
+        margin: 5px 10px 5px 0px;
+        font-size: 13px;
+    }
+
+    .candiDate-list .candiDate-list-favourite-time {
+        margin-left: auto;
+        text-align: center;
+        font-size: 13px;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 90px;
+        flex: 0 0 90px;
+    }
+    .candiDate-list .candiDate-list-favourite-time span {
+        display: block;
+        margin: 0 auto;
+    }
+    .candiDate-list .candiDate-list-favourite-time .candiDate-list-favourite {
+        display: inline-block;
+        position: relative;
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+        border: 1px solid #eeeeee;
+        border-radius: 100%;
+        text-align: center;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        margin-bottom: 20px;
+        font-size: 16px;
+        color: #646f79;
+    }
+    .candiDate-list .candiDate-list-favourite-time .candiDate-list-favourite:hover {
+        background: #ffffff;
+        color: #e74c3c;
+    }
+
+    .candiDate-banner .candiDate-list:hover {
+        position: inherit;
+        -webkit-box-shadow: inherit;
+        box-shadow: inherit;
+        z-index: inherit;
+    }
+
+    .bg-white {
+        background-color: #ffffff !important;
+    }
+    .p-4 {
+        padding: 1.5rem!important;
+    }
+    .mb-0, .my-0 {
+        margin-bottom: 0!important;
+    }
+    .shadow-sm {
+        box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+    }
+
+    .rezervare-dashboard-info-box .candiDates-list .thumb {
+        margin-right: 20px;
+    }
+</style>
+</html>
