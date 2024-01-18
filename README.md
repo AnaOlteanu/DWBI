@@ -7,7 +7,7 @@ The theme chosen for this project is the management of hotel reservations.
 - Oracle SQL database
 - Spring Framework
 ## Modules summary
-1. **Analysis**
+1. **Analysis report**
       - objective: _defining an analysis report to define the data warehouse and create the application that will run based on it_
   - description of the model chosen, entity and conceptual diagrams for the OLTP database
   - star diagram for the DW based on the OLTP schema
