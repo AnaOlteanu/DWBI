@@ -1,15 +1,15 @@
 # Data Warehouse & Business Intelligence project
-Master's team project of 3 members designed to showcase the configuration, implementation, management and using of a data warehouse starting from an OLTP database. It consists in 3 modules: Analysis, Database implementation and Application development. The [documentation file](https://github.com/AnaOlteanu/DWBI/blob/main/documentation/DWBI_documentation.pdf) 
+Master's team project of 3 members designed to showcase the configuration, implementation, management and using of a **data warehouse** starting from an OLTP database. It consists of 3 modules: Analysis, Database implementation and Application development. The [documentation file](https://github.com/AnaOlteanu/DWBI/blob/main/documentation/DWBI_documentation.pdf) 
 contains a summary of all the stages of the project, while the [development of the application](https://github.com/AnaOlteanu/DWBI/tree/main/hotel-administration-app) represents a Spring MVC project 
 that serves as an interface for solving the requirements needed.  
-The theme chosen for this project is the management of hotel reservations.
+The theme chosen for this project is the management of hotel reservations. Our application aims to help a travel agency to organize the data related to the hotel reservations made by clients, with the aim of simplifying the creation of the monthly or annual reports it needs. In order to gain more insight into travel agency bookings, we will build a **data warehouse** that will contain all booking data, organized and available for decision analysis and reporting.
 ## Technologies used
 - Oracle SQL database
 - Spring Framework
 ## Modules summary
 1. **Analysis report**
-      - objective: _defining an analysis report to define the data warehouse and create the application that will run based on it_
-  - description of the model chosen, entity and conceptual diagrams for the OLTP database
+      - objective: _creating an analysis report to define the data warehouse and develop the application that will run based on it_
+  - description of the chosen model, entity and conceptual diagrams for the OLTP database
   - star diagram for the DW based on the OLTP schema
   - identifying the constraints, indexes, dimension objects, partitioning tables, optimization of SQL queries
 2. **Database implementation**
