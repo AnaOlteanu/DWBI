@@ -6,6 +6,7 @@ The theme chosen for this project is the management of hotel reservations. Our a
 ## Technologies used
 - Oracle SQL database
 - Spring Framework
+- Thymeleaf
 ## Modules summary
 1. **Analysis report**
       - objective: _creating an analysis report to define the data warehouse and develop the application that will run based on it_
@@ -21,14 +22,14 @@ The theme chosen for this project is the management of hotel reservations. Our a
   - add and manage data in the OLTP database
   - view the impact of adding data in the OLTP DB on the DW
   - visual representations of the reports about the data in the DW
+## Collaborative contribution
+- all the requirements for the Analysis report
 ## Personal contribution
-  - creating the OLTP and the DW scehmas
-  - creating and populate the databases
-  - identifying and implementing the partitioning tables and the resulting partitions
-  - defining and optimization of a SQL query
-  - defining 5 SQL queries that will serve as reports of the data in the DW
-  - app development
-  - writing the documentation for the Analysis and Database implementation
+  - creating and populate the databases (pocedures)
+  - defining the partitions and analyze the execution plan for a query that uses the partitioned tables (partitioning by ordering according to the month)
+  - defining and validating the dimension objects
+  - defining 2 queries for data reports relevant for the theme
+  - app development - back-end + front-end (pair programming with another member of the teams)
 
 
 
