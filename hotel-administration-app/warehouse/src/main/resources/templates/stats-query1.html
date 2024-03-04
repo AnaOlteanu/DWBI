@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="TemplateMo">
+    <title>Add blog</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/fontawesome.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/flex-slider.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/templatemo-stand-blog.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/owl.css}"/>
+
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/bootstrap/css/bootstrap.min.css}"/>
+
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!--    <link rel="stylesheet"-->
+<!--          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+    <script type="text/javascript"
+            src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+</head>
+<body>
+
+<div th:insert="navbar :: navbar">  </div>
+
+<section class="contact-us">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="down-contact">
+                    <div class="row">
+                        <div id="chart_div" style="width: 900px; height: 500px;"></div>
+                    </div>
+                    <div class="row">
+                        <div id="piechart" style="width: 900px; height: 500px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<script type="text/javascript" th:src="@{/jquery/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/custom.js}"></script>
+<script type="text/javascript" th:src="@{/js/owl.js}"></script>
+<script type="text/javascript" th:src="@{/js/slick.js}"></script>
+<script type="text/javascript" th:src="@{/js/isotope.js}"></script>
+<script type="text/javascript" th:src="@{/js/accordions.js}"></script>
+
+<script th:inline="javascript">
+    var real_data = /*[[${chartData}]]*/'noValue';
+    $(document).ready(function() {
+        google.charts.load('current', {
+            packages : [ 'corechart', 'bar' ]
+        });
+        google.charts.setOnLoadCallback(drawColumnChart);
+        google.charts.setOnLoadCallback(drawPieChart);
+    });
+    function drawColumnChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Oras');
+        data.addColumn('number', 'Rezervari');
+        Object.keys(real_data).forEach(function(key) {
+            data.addRow([ key, real_data[key] ]);
+        });
+        var options = {
+            title : 'Statistici orase - sarbatori de iarna',
+            hAxis : {
+                title : 'Oras',
+            },
+            vAxis : {
+                title : 'Nr Rezervari'
+            }
+        };
+        var chart = new google.visualization.ColumnChart(document
+            .getElementById('chart_div'));
+        chart.draw(data, options);
+    }
+    function drawPieChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Oras');
+        data.addColumn('number', 'Rezervari');
+        Object.keys(real_data).forEach(function(key) {
+            data.addRow([ key, real_data[key] ]);
+        });
+        var options = {
+            title : 'Statistici orase - sarbatori de iarna'
+        };
+        var chart = new google.visualization.PieChart(document
+            .getElementById('piechart'));
+        chart.draw(data, options);
+    }
+</script>
+</body>
+
+</html>

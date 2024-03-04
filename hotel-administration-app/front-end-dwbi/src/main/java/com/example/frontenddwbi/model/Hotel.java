@@ -2,7 +2,6 @@ package com.example.frontenddwbi.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -10,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "hotel_ro")
+@Table(name = "hotel")
 @Getter
 @Setter
 @ToString
@@ -20,8 +19,7 @@ import java.util.List;
 public class Hotel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sec_hotel_ro")
-    @SequenceGenerator(name = "sec_hotel_ro", sequenceName = "sec_hotel_ro", initialValue = 1000, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_hotel")
     private Long idHotel;
 

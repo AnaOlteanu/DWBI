@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "oras_ro")
+@Table(name = "oras")
 @Getter
 @Setter
 @ToString

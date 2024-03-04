@@ -67,7 +67,7 @@
                         <ul class="page-numbers justify-content-center mb-0">
                             <li th:if="${discountPage.totalPages > 0}" class="pagination"
                                 th:each="pageNumber : ${#numbers.sequence(1,T(java.lang.Math).min(7,discountPage.totalPages))}">
-                                <a th:href="@{/discount/list(size=${discountPage.size}, page=${pageNumber})}"
+                                <a th:href="@{/rezervare/list(size=${discountPage.size}, page=${pageNumber})}"
                                    th:text="${pageNumber}" th:class="${pageNumber==discountPage.number + 1} ? active"></a>
                             </li>
 
@@ -79,7 +79,7 @@
                             </li>
                             <li th:if="${discountPage.totalPages > 0}" class="pagination" >
                                 <a th:if="${discountPage.number + 1 < discountPage.totalPages}"
-                                   th:href="@{/discount/list(size=${discountPage.size},page=${discountPage.number+2})}"><i class="fa fa-angle-double-right"></i></a>
+                                   th:href="@{/rezervare/list(size=${discountPage.size},page=${discountPage.number+2})}"><i class="fa fa-angle-double-right"></i></a>
                                 <span th:unless="${discountPage.number + 1 < discountPage.totalPages}"><i class="fa fa-angle-double-right"></i></span>
                             </li>
                         </ul>

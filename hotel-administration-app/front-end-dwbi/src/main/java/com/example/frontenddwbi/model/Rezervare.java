@@ -51,7 +51,7 @@ public class Rezervare {
     private String status;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(name = "camera_rezervare_ro",
+    @JoinTable(name = "camera_rezervare",
             joinColumns = @JoinColumn(name = "id_rezervare"),
             inverseJoinColumns = @JoinColumn(name = "id_camera"))
     @ToString.Exclude

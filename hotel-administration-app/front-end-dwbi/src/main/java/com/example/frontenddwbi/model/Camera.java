@@ -7,7 +7,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "camera_ro")
+@Table(name = "camera")
 @Getter
 @Setter
 @ToString

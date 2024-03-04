@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "angajat_ro")
+@Table(name = "angajat")
 @Getter
 @Setter
 @ToString
@@ -28,6 +28,15 @@ public class Angajat {
 
     private String nume;
     private String prenume;
+
+    @Column(name = "nr_telefon")
+    private String nrTelefon;
+
+    @Column(name = "data_angajare")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date dataAngajare;
+
+    private Integer salariu;
 
     @OneToMany(mappedBy = "angajat")
     @OnDelete(action = OnDeleteAction.CASCADE)
